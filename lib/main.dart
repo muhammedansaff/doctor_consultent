@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
+//hello
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,6 +33,5 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Doctor_consulting",
         home: const Welcome_screen());
-        
   }
 }
