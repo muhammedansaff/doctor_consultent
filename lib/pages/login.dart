@@ -1,3 +1,4 @@
+import 'package:doctor/pages/Signup.dart';
 import 'package:doctor/refactor/refactor.dart';
 import 'package:flutter/material.dart';
 
@@ -43,13 +44,39 @@ class Login extends StatelessWidget {
                             icon: Icons.lock),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 15,
                       ),
                       // This ensures the button is at the bottom
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(10),
                         child:
-                            MyButton(text: "Log In", onTap: () {}, width: 360),
+                            MyButton(text: "Log In", onTap: () {}, width: 300),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Dont have any account?"),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUp(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              "Create Account",
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                          )
+                        ],
                       )
                     ],
                   ),

@@ -1,5 +1,6 @@
 import 'package:doctor/pages/Signup.dart';
 import 'package:doctor/pages/login.dart';
+import 'package:doctor/widgest/navbar_roots.dart';
 import 'package:doctor/refactor/refactor.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +24,10 @@ class Welcome_screen extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Login()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NavBarRoots()));
                     },
                     child: Text(
                       "SKIP",

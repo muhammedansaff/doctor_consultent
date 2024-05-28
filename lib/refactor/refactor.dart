@@ -85,3 +85,64 @@ class _MyTextfieldState extends State<MyTextfield> {
     );
   }
 }
+
+class Mywid extends StatelessWidget {
+  final void Function()? onTap;
+  final String heading;
+  final String subhead;
+  final IconData icon;
+  const Mywid(
+      {super.key,
+      required this.icon,
+      required this.onTap,
+      required this.heading,
+      required this.subhead});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(color: Colors.black12, blurRadius: 6, spreadRadius: 4)
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              decoration: const BoxDecoration(
+                  color: Colors.white, shape: BoxShape.circle),
+              child: Icon(
+                icon,
+                size: 35,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            const SizedBox(height: 25),
+            Text(
+              heading,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              subhead,
+              style: TextStyle(color: Colors.white),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
