@@ -103,7 +103,8 @@ class Mywid extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding:
+            const EdgeInsets.only(left: 25, right: 20, top: 20, bottom: 20),
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
@@ -146,3 +147,22 @@ class Mywid extends StatelessWidget {
     );
   }
 }
+
+class MyICON extends StatelessWidget {
+  final Widget icon;
+  final void Function()? onPressed;
+  const MyICON({super.key, required this.icon, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white30, shape: BoxShape.circle),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: icon,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+

@@ -1,3 +1,4 @@
+import 'package:doctor/doctors.dart';
 import 'package:doctor/pages/appointment_screen.dart';
 import 'package:doctor/refactor/refactor.dart';
 import 'package:flutter/material.dart';
@@ -7,38 +8,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> symptoms = [
-      "Temperature",
-      "Snuffle",
-      "Fever",
-      "Cough",
-      "Cold"
-    ];
-    List<String> img = [
-      "assets/images/1.png",
-      "assets/images/2.png",
-      "assets/images/3.png",
-      "assets/images/5.png",
-    ];
-    List<String> name = [
-      "Dr.john",
-      "Dr.Samuel",
-      "Dr.Sarah",
-      "Dr.H",
-    ];
-    List<String> job = [
-      "Cardiologist",
-      "Therapist",
-      "gynecologist",
-      "Hematologist",
-    ];
-    List<String> rating = [
-      "4.8",
-      "3.9",
-      "4.5",
-      "4.1",
-    ];
-
     return SingleChildScrollView(
       padding: EdgeInsets.only(top: 40),
       child: Column(
@@ -50,12 +19,12 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Hello Alex",
+                  "Hello Shamil",
                   style: TextStyle(fontSize: 30),
                 ),
                 CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage("assets/images/1.png"),
+                  radius: 35,
+                  backgroundImage: AssetImage("assets/images/shamil.jpg"),
                 )
               ],
             ),
@@ -128,9 +97,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
@@ -142,7 +108,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           GridView.builder(
-            itemCount: 4,
+            itemCount: 8,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate:
@@ -154,6 +120,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => AppointmentScreen(
+                          jobdisc: jobdisc[index],
                           img: img[index],
                           job: job[index],
                           name: name[index],
