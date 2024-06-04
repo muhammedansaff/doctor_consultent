@@ -1,6 +1,7 @@
 import 'package:doctor/doctors.dart';
 import 'package:doctor/pages/appointment_screen.dart';
 import 'package:doctor/refactor/refactor.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +9,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Determine the number of columns based on the screen width
+    int gridAxisCount = 2; // Default for mobile
+    if (kIsWeb) {
+      double screenWidth = MediaQuery.of(context).size.width;
+      if (screenWidth >= 1200) {
+        gridAxisCount = 4;
+      } else if (screenWidth >= 800) {
+        gridAxisCount = 3;
+      }
+    }
+
     return SingleChildScrollView(
       padding: EdgeInsets.only(top: 40),
       child: Column(
@@ -111,8 +123,11 @@ class HomeScreen extends StatelessWidget {
             itemCount: 8,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: gridAxisCount,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+            ),
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                 onTap: () {
@@ -139,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                             blurRadius: 4,
                             spreadRadius: 2)
                       ]),
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

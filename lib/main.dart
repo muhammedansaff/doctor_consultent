@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-          primaryColor: const Color(0xFF7165D6),
+          primaryColor: Color.fromARGB(255, 83, 218, 234),
           primarySwatch: const MaterialColor(
             0xFF7165D6,
             <int, Color>{

@@ -41,8 +41,12 @@ class MyTextfield extends StatefulWidget {
   final bool? obscure;
   final String text;
   final IconData icon;
+  final String typee;
+  final TextEditingController cnt;
   MyTextfield(
       {super.key,
+      required this.cnt,
+      required this.typee,
       required this.obscure,
       this.passtoggle,
       required this.text,
@@ -55,7 +59,24 @@ class MyTextfield extends StatefulWidget {
 class _MyTextfieldState extends State<MyTextfield> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (widget.typee == "name" && (value!.isEmpty)) {
+          return "This field must not be empty";
+        }
+        if (widget.typee == "Email" &&
+            (!value!.contains('@') || value.isEmpty)) {
+          return "Enter a valid email";
+        }
+        if (widget.typee == "pass" && (value!.length < 8 || value.isEmpty)) {
+          return "Enter a valid Password";
+        }
+        if (widget.typee == "phone" && (value!.length != 10 || value.isEmpty)) {
+          return "Enter a valid phone";
+        }
+        return null;
+      },
+      controller: widget.cnt,
       obscureText: widget.obscure!,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
@@ -165,4 +186,3 @@ class MyICON extends StatelessWidget {
     );
   }
 }
-
