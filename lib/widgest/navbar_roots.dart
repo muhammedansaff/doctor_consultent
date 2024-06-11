@@ -1,4 +1,7 @@
+import 'package:doctor/pages/Schedule_screen.dart';
 import 'package:doctor/pages/home.dart';
+import 'package:doctor/pages/message_screen.dart';
+import 'package:doctor/pages/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +17,9 @@ class _NavBarRootsState extends State<NavBarRoots> {
 
   final _screens = [
     HomeScreen(),
-    Container(),
-    Container(
-      child: Center(child: Text("hello")),
-    ),
-    Container()
+    Message_Screen(),
+    schedule_screen(),
+    SettingsScreen(),
   ];
 
   @override
@@ -44,7 +45,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              label: "Setting",
+              label: "Settings",
             ),
           ],
           backgroundColor: Colors.white,
@@ -63,6 +64,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
           },
         ),
       ),
+      
     );
   }
 }

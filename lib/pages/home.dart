@@ -1,4 +1,4 @@
-import 'package:doctor/doctors.dart';
+import 'package:doctor/data/doctors.dart';
 import 'package:doctor/pages/appointment_screen.dart';
 import 'package:doctor/refactor/refactor.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;

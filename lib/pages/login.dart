@@ -58,7 +58,7 @@ class Login extends StatelessWidget {
                         // This ensures the button is at the bottom
                         Padding(
                           padding: const EdgeInsets.all(10),
-                          child: MyButton(
+                          child: MyButton(col:  Theme.of(context).primaryColor,
                               text: "Log In",
                               onTap: () {
                                 if (_formKeyy.currentState!.validate()) {

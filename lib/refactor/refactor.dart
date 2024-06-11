@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final String text;
   final double width;
+  final Color col;
   final void Function()? onTap;
   const MyButton(
       {super.key,
+      required this.col,
       required this.text,
       required this.onTap,
       required this.width});
@@ -17,7 +19,7 @@ class MyButton extends StatelessWidget {
       child: Container(
         width: width,
         decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
+            color: col,
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
@@ -26,7 +28,7 @@ class MyButton extends StatelessWidget {
               text,
               style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -182,6 +184,67 @@ class MyICON extends StatelessWidget {
         onPressed: onPressed,
         icon: icon,
         color: Colors.white,
+      ),
+    );
+  }
+}
+
+class MyListTile extends StatelessWidget {
+  final String text;
+  final IconData? icon;
+  final Color? backgroundColor;
+  final Color? iconcolor;
+  const MyListTile(
+      {super.key,
+      required this.iconcolor,
+      required this.backgroundColor,
+      required this.icon,
+      required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 13, bottom: 25),
+      child: ListTile(
+        leading: CircleAvatar(
+          child: Icon(
+            icon,
+            color: iconcolor,
+          ),
+          backgroundColor: backgroundColor,
+        ),
+        title: Text(
+          text,
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        trailing: Icon(Icons.arrow_forward_ios_outlined),
+      ),
+    );
+  }
+}
+
+class MySchedule extends StatelessWidget {
+  final void Function()? onTap;
+  final Color col;
+  final String text;
+  const MySchedule(
+      {super.key, required this.onTap, required this.col, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 40,
+        width: 90,
+        decoration:
+            BoxDecoration(color: col, borderRadius: BorderRadius.circular(10)),
+        child: Center(
+            child: Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        )),
       ),
     );
   }

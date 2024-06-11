@@ -71,7 +71,7 @@ class Welcome_screen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    MyButton(
+                    MyButton(col:  Theme.of(context).primaryColor,
                       width: 160,
                       text: "Log In",
                       onTap: () {
@@ -79,7 +79,7 @@ class Welcome_screen extends StatelessWidget {
                             MaterialPageRoute(builder: (context) => Login()));
                       },
                     ),
-                    MyButton(
+                    MyButton(col:  Theme.of(context).primaryColor,
                       width: 160,
                       text: "Sign Up",
                       onTap: () {

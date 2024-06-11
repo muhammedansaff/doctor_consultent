@@ -85,7 +85,7 @@ class _SignUpState extends State<SignUp> {
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: MyButton(
+                child: MyButton(col:  Theme.of(context).primaryColor,
                   text: "Create Account",
                   onTap: () {
                     if (_formKey.currentState!.validate()) {

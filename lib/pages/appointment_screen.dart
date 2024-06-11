@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:doctor/person.dart';
+import 'package:doctor/data/person.dart';
 import 'package:doctor/refactor/refactor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,110 +28,110 @@ class AppointmentScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
       body: Stack(
         children: [
-          Column(
-            children: [
-              SizedBox(
-                height: 35,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back_ios_new,
-                        color: Colors.white,
-                      ),
-                    ),
-                    PopupMenuButton<String>(
-                      onSelected: (value) {
-                        // Handle the selected value
-                        if (value == "settings") {
-                          print("Settings selected");
-                          // Navigate to settings or perform other actions
-                        } else if (value == "about") {
-                          print("About selected");
-                          // Navigate to about or perform other actions
-                        }
-                      },
-                      icon: Icon(
-                        Icons.more_vert,
-                        color: Colors.white,
-                      ),
-                      itemBuilder: (BuildContext context) {
-                        return ls.map((String choice) {
-                          return PopupMenuItem<String>(
-                            value: choice,
-                            child: Text(choice),
-                          );
-                        }).toList();
-                      },
-                    ),
-                  ],
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 35,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 35,
-                      backgroundImage: AssetImage(img),
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.black45,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          job,
-                          style: TextStyle(color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.white,
                         ),
-                        SizedBox(
-                          width: 5,
+                      ),
+                      PopupMenuButton<String>(
+                        onSelected: (value) {
+                          // Handle the selected value
+                          if (value == "settings") {
+                            print("Settings selected");
+                            // Navigate to settings or perform other actions
+                          } else if (value == "about") {
+                            print("About selected");
+                            // Navigate to about or perform other actions
+                          }
+                        },
+                        icon: Icon(
+                          Icons.more_vert,
+                          color: Colors.white,
                         ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                        ),
-                        Text(rating)
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        MyICON(
-                          icon: Icon(Icons.call),
-                          onPressed: () {},
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        MyICON(
-                            icon: Icon(CupertinoIcons.chat_bubble_text_fill),
-                            onPressed: () {})
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                  ],
+                        itemBuilder: (BuildContext context) {
+                          return ls.map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 35,
+                        backgroundImage: AssetImage(img),
+                      ),
+                      Text(
+                        name,
+                        style: TextStyle(
+                            color: Colors.black45,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            job,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          Text(rating)
+                        ],
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MyICON(
+                            icon: Icon(Icons.call),
+                            onPressed: () {},
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          MyICON(
+                              icon: Icon(CupertinoIcons.chat_bubble_text_fill),
+                              onPressed: () {})
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -300,42 +300,56 @@ class AppointmentScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Consultation Fees",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17),
-                            ),
-                            Text(
-                              "\$ 100",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        MyButton(
-                            text: "Book Appointment",
-                            onTap: () {},
-                            width: MediaQuery.sizeOf(context).width),
+                            height:
+                                80), // Add extra space to avoid bottom overflow
                       ],
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        height: 120,
+        padding: EdgeInsets.only(left: 8, right: 8, top: 10),
+        decoration: BoxDecoration(color: Colors.white, boxShadow: [
+          BoxShadow(spreadRadius: 2, blurRadius: 4, color: Colors.black12)
+        ]),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Consultation Fees",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
+                ),
+                Text(
+                  "\$ 100",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            MyButton(
+              col: Theme.of(context).primaryColor,
+              text: "Book Appointment",
+              onTap: () {},
+              width: MediaQuery.sizeOf(context).width,
+            ),
+          ],
+        ),
       ),
     );
   }
